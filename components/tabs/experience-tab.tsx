@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
+import { Calendar, MapPin, CheckCircle2 } from "lucide-react";
 import { PORTFOLIO_DATA } from "@/lib/portfolio-data";
+import SpotlightCard from "@/components/SpotlightCard/SpotlightCard";
+import ShinyText from "@/components/ShinyText/ShinyText";
 
 export function ExperienceTab() {
   const { experiences } = PORTFOLIO_DATA;
@@ -10,17 +12,23 @@ export function ExperienceTab() {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       <div>
-        <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-          My Experience
-        </h2>
+        <ShinyText
+          text="My Experience"
+          className="text-2xl md:text-3xl font-black text-white tracking-tight"
+          color="#f4f4f5"
+          shineColor="#fedc5a"
+          speed={4}
+        />
         <div className="underline-gold" />
       </div>
 
       <div className="space-y-6">
         {experiences.map((exp) => (
-          <div
+          <SpotlightCard
             key={exp.id}
-            className="p-6 md:p-7 rounded-2xl bg-[#202227] border border-[#2e313b] hover:border-[#fedc5a]/40 transition-colors shadow-lg relative"
+            color="rgba(168, 85, 247, 0.12)"
+            spotlightSize={400}
+            className="p-6 md:p-7 rounded-2xl bg-[#211d2c]/80 border border-white/10 shadow-lg relative"
           >
             {/* Header: Role & Period */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
@@ -39,7 +47,7 @@ export function ExperienceTab() {
               </div>
 
               <div className="self-start md:self-auto">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#2a2d36] text-gray-300 border border-[#3b3f4c]">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#2a2537] text-gray-300 border border-white/10">
                   <Calendar className="w-3.5 h-3.5 text-[#fedc5a]" />
                   {exp.period}
                 </span>
@@ -71,20 +79,19 @@ export function ExperienceTab() {
             </div>
 
             {/* Skills Tags */}
-            <div className="flex flex-wrap gap-2 pt-3 border-t border-[#2d3039]">
+            <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
               {exp.skills.map((skill, sIdx) => (
                 <span
                   key={sIdx}
-                  className="px-2.5 py-1 rounded-md bg-[#272931] text-[11px] font-medium text-gray-300 border border-[#373a45]"
+                  className="px-2.5 py-1 rounded-md bg-[#2b2638] text-[11px] font-medium text-gray-300 border border-white/10"
                 >
                   {skill}
                 </span>
               ))}
             </div>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
     </div>
   );
 }
-

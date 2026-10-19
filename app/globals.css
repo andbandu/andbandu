@@ -2,73 +2,86 @@
 
 @layer base {
   :root {
-    --background: #111215;
-    --foreground: #f3f4f6;
-    --card: #1c1d20;
-    --card-foreground: #f3f4f6;
-    --border: #2d3036;
+    --background: #0d0c11;
+    --foreground: #f4f4f5;
+    --card: rgba(30, 27, 38, 0.75);
+    --card-foreground: #f4f4f5;
+    --border: rgba(255, 255, 255, 0.08);
     --accent-gold: #fedc5a;
     --accent-gold-hover: #e5c545;
   }
 
   body {
-    background-color: #0f1013;
-    color: #f3f4f6;
+    background-color: #0d0c11;
+    background-image:
+      radial-gradient(1100px 700px at 15% -5%, rgba(109, 40, 217, 0.12), transparent 70%),
+      radial-gradient(900px 600px at 85% 30%, rgba(59, 130, 246, 0.07), transparent 70%),
+      radial-gradient(1000px 800px at 50% 90%, rgba(217, 119, 6, 0.05), transparent 70%);
+    background-attachment: fixed;
+    color: #f4f4f5;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
 }
 
-/* Custom UI styling mirroring codebasics portfolio template */
-
-.portfolio-top-bar {
-  background: linear-gradient(135deg, #160836 0%, #4c1d95 60%, #581c87 100%);
-  border: 2px solid #fedc5a;
-  border-top: none;
-  box-shadow: 0 10px 25px -5px rgba(254, 220, 90, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-}
-
+/* Glassmorphism Cards matching ProfileCard aesthetic */
 .portfolio-card {
-  background-color: #1a1b1e;
-  border: 1px solid #2e3036;
+  background: rgba(30, 27, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow:
+    0 24px 48px -18px rgba(0, 0, 0, 0.8),
+    0 6px 18px -8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 .portfolio-card-elevated {
-  background: #1d1e22;
-  border: 1px solid #32353c;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(180deg, #312c3b 0%, #201c27 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 20px 40px -15px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .underline-gold {
   width: 52px;
   height: 4px;
-  background-color: #fedc5a;
+  background: linear-gradient(90deg, #fedc5a 0%, #f59e0b 70%, rgba(254, 220, 90, 0.2) 100%);
   border-radius: 9999px;
   border: none;
   margin: 10px 0 24px;
+  box-shadow: 0 0 12px rgba(254, 220, 90, 0.25);
 }
 
+/* Skill badges matching ProfileCard tile palette */
 .key-badge {
-  background-color: #202125;
-  border: 1px solid #33363e;
-  box-shadow: 1px 1px 0px 0px rgba(255, 255, 255, 0.05) inset;
-  color: #d1d5db;
-  transition: all 0.25s ease-out;
+  background: linear-gradient(180deg, #2d2936 0%, #201c27 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 10px -4px rgba(0, 0, 0, 0.6);
+  color: #e4e4e7;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .key-badge:hover {
   color: #fedc5a;
-  border-color: rgba(254, 220, 90, 0.4);
-  box-shadow: 0 0 12px rgba(254, 220, 90, 0.15);
-  transform: translateY(-1px);
+  border-color: rgba(254, 220, 90, 0.45);
+  box-shadow:
+    0 0 16px rgba(254, 220, 90, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
+/* Desktop and Mobile Tabs */
 .menu-tab-container {
-  background: rgba(32, 33, 37, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid #34373e;
+  background: rgba(36, 32, 45, 0.85);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: none;
   border-right: none;
   border-bottom-left-radius: 20px;
@@ -82,25 +95,33 @@
     left: 0;
     right: 0;
     z-index: 50;
-    background: rgba(24, 25, 28, 0.95);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid #363942;
+    background: rgba(24, 21, 30, 0.95);
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 20px 20px 0 0;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 -12px 35px rgba(0, 0, 0, 0.7);
   }
 }
 
+/* Card hover transitions */
 .project-card-outer {
-  background: #202126;
-  border: 1px solid #2f323a;
+  background: linear-gradient(180deg, #2b2735 0%, #1c1924 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
+  box-shadow:
+    0 8px 24px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-card-outer:hover {
   transform: translateY(-4px);
   border-color: rgba(254, 220, 90, 0.45);
-  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(254, 220, 90, 0.12);
+  box-shadow:
+    0 20px 40px -15px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(254, 220, 90, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .project-card-outer:hover .project-action-btn {
@@ -110,9 +131,12 @@
 }
 
 .certificate-card-outer {
-  background: #202126;
-  border: 1px solid #2f323a;
+  background: linear-gradient(180deg, #2b2735 0%, #1c1924 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
+  box-shadow:
+    0 8px 24px -10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
@@ -120,28 +144,31 @@
 .certificate-card-outer:hover {
   transform: translateY(-4px);
   border-color: rgba(254, 220, 90, 0.45);
-  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(254, 220, 90, 0.12);
+  box-shadow:
+    0 20px 40px -15px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(254, 220, 90, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .certificate-card-outer:hover .cert-overlay {
   opacity: 1;
 }
 
-/* Custom scrollbars for modals and long contents */
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #151619;
+  background: #110f17;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #33363f;
+  background: #322d3e;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4b505c;
+  background: #4a435a;
 }

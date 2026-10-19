@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { PORTFOLIO_DATA, Certificate } from "@/lib/portfolio-data";
+import SpotlightCard from "@/components/SpotlightCard/SpotlightCard";
+import ShinyText from "@/components/ShinyText/ShinyText";
 
 export function CertificatesTab() {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
@@ -27,22 +29,28 @@ export function CertificatesTab() {
     <>
       <div className="space-y-8 animate-in fade-in duration-300">
         <div>
-          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-            Awards & Certificate
-          </h2>
+          <ShinyText
+            text="Awards & Certificate"
+            className="text-2xl md:text-3xl font-black text-white tracking-tight"
+            color="#f4f4f5"
+            shineColor="#fedc5a"
+            speed={4}
+          />
           <div className="underline-gold" />
         </div>
 
-        {/* Certificate Grid */}
+        {/* Certificate Grid with SpotlightCard */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {certificates.map((cert) => (
-            <div
+            <SpotlightCard
               key={cert.id}
               onClick={() => handleOpenCert(cert)}
+              color="rgba(254, 220, 90, 0.14)"
+              spotlightSize={320}
               className="certificate-card-outer flex flex-col justify-between cursor-pointer group"
             >
               {/* Certificate Screen with Hover Eye Button Overlay */}
-              <div className="relative aspect-[16/11] w-full bg-[#18191d] overflow-hidden">
+              <div className="relative aspect-[16/11] w-full bg-[#181520] overflow-hidden">
                 <img
                   src={cert.image}
                   alt={cert.title}
@@ -63,14 +71,14 @@ export function CertificatesTab() {
               </div>
 
               {/* Data Section */}
-              <div className="p-4 bg-[#202126] flex-1 flex flex-col justify-between border-t border-[#2d3038]">
+              <div className="p-4 bg-[#211d2b] flex-1 flex flex-col justify-between border-t border-white/10">
                 <div>
                   <h3 className="text-sm md:text-base font-bold text-white group-hover:text-[#fedc5a] transition-colors line-clamp-2 mb-2 leading-snug">
                     {cert.title}
                   </h3>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-gray-400 pt-2 border-t border-[#2d3038]/60">
+                <div className="flex items-center justify-between text-xs text-gray-400 pt-2 border-t border-white/10">
                   <span>Issued: {cert.issueDate}</span>
                   <span className="text-[#fedc5a] font-medium flex items-center gap-1">
                     <Award className="w-3.5 h-3.5" />
@@ -78,7 +86,7 @@ export function CertificatesTab() {
                   </span>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -86,8 +94,8 @@ export function CertificatesTab() {
       {/* Certificate Preview Modal */}
       {selectedCert && (
         <Dialog open={isModalOpen} onOpenChange={(open) => !open && setIsModalOpen(false)}>
-          <DialogContent className="max-w-3xl bg-[#18191d] border-[#343742] p-6 text-gray-200">
-            <DialogHeader className="border-b border-[#2d3038] pb-4">
+          <DialogContent className="max-w-3xl bg-[#1b1724] border-white/10 p-6 text-gray-200">
+            <DialogHeader className="border-b border-white/10 pb-4">
               <DialogTitle className="text-xl font-bold text-white text-left">
                 {selectedCert.title}
               </DialogTitle>
@@ -95,7 +103,7 @@ export function CertificatesTab() {
 
             <div className="space-y-6 pt-2">
               {/* Full Image Preview */}
-              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-black border border-[#31343e] shadow-2xl">
+              <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-black border border-white/10 shadow-2xl">
                 <img
                   src={selectedCert.image}
                   alt={selectedCert.title}
@@ -104,7 +112,7 @@ export function CertificatesTab() {
               </div>
 
               {/* Metadata Box */}
-              <div className="p-4 rounded-xl bg-[#212329] border border-[#31343f] grid grid-cols-1 md:grid-cols-3 gap-4 text-xs md:text-sm">
+              <div className="p-4 rounded-xl bg-[#231f2d] border border-white/10 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs md:text-sm">
                 <div>
                   <span className="text-gray-400 block text-[11px] uppercase tracking-wider font-bold">
                     Issuing Organization
@@ -135,7 +143,7 @@ export function CertificatesTab() {
                     {selectedCert.skills.map((skill, idx) => (
                       <span
                         key={idx}
-                        className="px-2.5 py-1 rounded-md bg-[#282a33] text-gray-300 border border-[#383b48] text-xs font-medium"
+                        className="px-2.5 py-1 rounded-md bg-[#2b2637] text-gray-300 border border-white/10 text-xs font-medium"
                       >
                         {skill}
                       </span>
@@ -163,4 +171,3 @@ export function CertificatesTab() {
     </>
   );
 }
-

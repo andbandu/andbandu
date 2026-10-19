@@ -84,16 +84,16 @@ export interface PortfolioData {
 
 export const PORTFOLIO_DATA: PortfolioData = {
   profile: {
-    name: "Alex Morgan",
-    headline: "Data Analyst & BI Developer",
+    name: "Lakshitha Sahabandu",
+    headline: "Front-End AI Engineer",
     bio: "Hello and welcome to my portfolio! I am a Data Analyst with a deep passion for translating complex, disparate datasets into clear, actionable business intelligence that drives strategic executive decisions.",
     subBio: "With strong expertise in Power BI, SQL, Python, and Advanced Excel modeling, I specialize in building automated end-to-end data pipelines, predictive analytics models, and interactive KPI dashboards that empower stakeholder teams to uncover revenue opportunities and optimize operational efficiency.",
-    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    avatarUrl: "/profile.jpg",
     videoIntroUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    email: "alex.morgan.analytics@example.com",
-    location: "Austin, Texas / Remote",
-    linkedinUrl: "https://linkedin.com/in/alexmorgan-bi-analyst",
-    githubUrl: "https://github.com/alexmorgan-analytics",
+    email: "hi@andbandu.com",
+    location: "Kiribathgoda, Sri Lanka / Remote",
+    linkedinUrl: "https://www.linkedin.com/in/andbandu/",
+    githubUrl: "https://github.com/andbandu",
     resumeUrl: "#download-resume",
     availability: "Open to Full-time & High-Impact Consulting Opportunities",
   },

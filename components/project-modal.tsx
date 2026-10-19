@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { LinkedInIcon, GitHubIcon } from "@/components/icons";
 import { Project } from "@/lib/portfolio-data";
+import ShinyText from "@/components/ShinyText/ShinyText";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -46,10 +47,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-5xl max-h-[92vh] overflow-y-auto bg-[#17181c] border-[#323640] p-6 md:p-8 text-gray-200">
-        <DialogHeader className="border-b border-[#2d3038] pb-4">
+      <DialogContent className="max-w-5xl max-h-[92vh] overflow-y-auto bg-[#1a1725] border-white/10 p-6 md:p-8 text-gray-200 shadow-2xl">
+        <DialogHeader className="border-b border-white/10 pb-4">
           <DialogTitle className="text-xl md:text-2xl font-black text-white text-left tracking-tight">
-            {project.title}
+            <ShinyText text={project.title} color="#ffffff" shineColor="#fedc5a" speed={4} />
           </DialogTitle>
         </DialogHeader>
 
@@ -151,7 +152,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           {/* Right Column (7 cols): Interactive Carousel */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             {screenshots.length > 0 ? (
-              <div className="relative rounded-2xl overflow-hidden bg-[#202227] border border-[#323642] p-2 shadow-xl">
+              <div className="relative rounded-2xl overflow-hidden bg-[#221e2d] border border-white/10 p-2 shadow-xl">
                 <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-black/60">
                   <img
                     src={screenshots[currentSlide].image}
@@ -210,7 +211,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
         </div>
 
         {/* Horizontal Divider */}
-        <div className="w-full h-[1px] bg-[#2d3038] my-4" />
+        <div className="w-full h-[1px] bg-white/10 my-4" />
 
         {/* Bottom Section: Full Project Details */}
         <div className="space-y-6 pt-2">
@@ -218,7 +219,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <h4 className="text-xl font-black text-white tracking-tight mb-3">
               Project Details
             </h4>
-            <div className="space-y-4 text-sm md:text-base text-gray-300 leading-relaxed bg-[#202227]/60 p-5 rounded-2xl border border-[#2e313b]">
+            <div className="space-y-4 text-sm md:text-base text-gray-300 leading-relaxed bg-[#221e2d]/75 p-5 rounded-2xl border border-white/10 shadow-lg">
               <div>
                 <span className="font-bold text-white block mb-1">
                   📈 Project Overview
@@ -235,7 +236,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                     {project.steps.map((step, idx) => (
                       <div
                         key={idx}
-                        className="p-3 rounded-xl bg-[#262830] border border-[#353844] text-xs md:text-sm"
+                        className="p-3 rounded-xl bg-[#2b2638] border border-white/10 text-xs md:text-sm"
                       >
                         <span className="font-bold text-[#fedc5a] block mb-0.5">
                           {step.phase}

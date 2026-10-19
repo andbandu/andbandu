@@ -6,6 +6,8 @@ import { Table, BarChart3, Database, Code2, Sparkles, ArrowRight } from "lucide-
 import { Button } from "@/components/ui/button";
 import { PORTFOLIO_DATA, Project } from "@/lib/portfolio-data";
 import { ProjectModal } from "@/components/project-modal";
+import SpotlightCard from "@/components/SpotlightCard/SpotlightCard";
+import ShinyText from "@/components/ShinyText/ShinyText";
 
 export function ProjectsTab() {
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
@@ -50,14 +52,35 @@ export function ProjectsTab() {
     }
   };
 
+  const getSpotlightColor = (toolType: string) => {
+    switch (toolType) {
+      case "excel":
+        return "rgba(16, 185, 129, 0.15)";
+      case "powerbi":
+        return "rgba(245, 158, 11, 0.16)";
+      case "sql":
+        return "rgba(14, 165, 233, 0.15)";
+      case "python":
+        return "rgba(168, 85, 247, 0.15)";
+      case "ai":
+        return "rgba(217, 70, 239, 0.16)";
+      default:
+        return "rgba(254, 220, 90, 0.15)";
+    }
+  };
+
   return (
     <>
       <div className="space-y-8 animate-in fade-in duration-300">
-        {/* Title */}
+        {/* Title with ShinyText */}
         <div>
-          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-            My Projects
-          </h2>
+          <ShinyText
+            text="My Projects"
+            className="text-2xl md:text-3xl font-black text-white tracking-tight"
+            color="#f4f4f5"
+            shineColor="#fedc5a"
+            speed={4}
+          />
           <div className="underline-gold" />
         </div>
 
@@ -70,7 +93,7 @@ export function ProjectsTab() {
               className={`px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold transition-all cursor-pointer ${
                 selectedFilter === filter.id
                   ? "bg-[#fedc5a] text-[#111215] shadow-md shadow-[#fedc5a]/20 scale-105"
-                  : "bg-[#212328] text-gray-300 border border-[#31343e] hover:border-[#fedc5a]/40 hover:text-white"
+                  : "bg-[#25222e] text-gray-300 border border-white/10 hover:border-[#fedc5a]/40 hover:text-white"
               }`}
             >
               {filter.label}
@@ -78,16 +101,18 @@ export function ProjectsTab() {
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid with React Bits SpotlightCard */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
-            <div
+            <SpotlightCard
               key={project.id}
               onClick={() => handleOpenProject(project)}
+              color={getSpotlightColor(project.toolType)}
+              spotlightSize={320}
               className="project-card-outer p-3.5 flex flex-col justify-between cursor-pointer group"
             >
               {/* Image Preview Box */}
-              <div className="relative aspect-[16/11] w-full rounded-2xl overflow-hidden bg-[#18191d] border border-[#2c2f38]">
+              <div className="relative aspect-[16/11] w-full rounded-2xl overflow-hidden bg-[#181520] border border-white/10">
                 {project.screenshots?.[0]?.image ? (
                   <img
                     src={project.screenshots[0].image}
@@ -100,7 +125,7 @@ export function ProjectsTab() {
                   </div>
                 )}
                 {/* Tool Badge Chip */}
-                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[11px] font-bold text-gray-200">
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-bold text-gray-200">
                   {project.toolLabel}
                 </div>
               </div>
@@ -118,21 +143,21 @@ export function ProjectsTab() {
                 </div>
 
                 {/* Bottom Bar: Action Button + Tool Icon */}
-                <div className="flex items-center justify-between pt-2 border-t border-[#2d3038]">
+                <div className="flex items-center justify-between pt-2 border-t border-white/10">
                   <button
                     type="button"
-                    className="project-action-btn text-xs font-semibold px-3 py-1.5 rounded-lg border border-[#444853] text-gray-300 transition-all flex items-center gap-1.5 cursor-pointer"
+                    className="project-action-btn text-xs font-semibold px-3 py-1.5 rounded-lg border border-white/15 text-gray-300 transition-all flex items-center gap-1.5 cursor-pointer"
                   >
                     <span>See My Work</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
-                  <div className="w-8 h-8 rounded-lg bg-[#272a33] flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-[#272332] flex items-center justify-center border border-white/5">
                     {getToolIcon(project.toolType)}
                   </div>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -146,4 +171,3 @@ export function ProjectsTab() {
     </>
   );
 }
-

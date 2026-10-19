@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Morgan | Data Analyst & BI Developer Portfolio",
+  title: "Lakshitha Sahabandu | Front-End AI Engineer",
   description:
     "Interactive portfolio showcasing enterprise Business Intelligence dashboards, SQL data engineering, financial modeling, and predictive analytics.",
 };
