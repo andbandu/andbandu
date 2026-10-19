@@ -1,26 +1,147 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #111215;
+    --foreground: #f3f4f6;
+    --card: #1c1d20;
+    --card-foreground: #f3f4f6;
+    --border: #2d3036;
+    --accent-gold: #fedc5a;
+    --accent-gold-hover: #e5c545;
+  }
+
+  body {
+    background-color: #0f1013;
+    color: #f3f4f6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom UI styling mirroring codebasics portfolio template */
+
+.portfolio-top-bar {
+  background: linear-gradient(135deg, #160836 0%, #4c1d95 60%, #581c87 100%);
+  border: 2px solid #fedc5a;
+  border-top: none;
+  box-shadow: 0 10px 25px -5px rgba(254, 220, 90, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-card {
+  background-color: #1a1b1e;
+  border: 1px solid #2e3036;
+  border-radius: 20px;
+}
+
+.portfolio-card-elevated {
+  background: #1d1e22;
+  border: 1px solid #32353c;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+.underline-gold {
+  width: 52px;
+  height: 4px;
+  background-color: #fedc5a;
+  border-radius: 9999px;
+  border: none;
+  margin: 10px 0 24px;
+}
+
+.key-badge {
+  background-color: #202125;
+  border: 1px solid #33363e;
+  box-shadow: 1px 1px 0px 0px rgba(255, 255, 255, 0.05) inset;
+  color: #d1d5db;
+  transition: all 0.25s ease-out;
+}
+
+.key-badge:hover {
+  color: #fedc5a;
+  border-color: rgba(254, 220, 90, 0.4);
+  box-shadow: 0 0 12px rgba(254, 220, 90, 0.15);
+  transform: translateY(-1px);
+}
+
+.menu-tab-container {
+  background: rgba(32, 33, 37, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid #34373e;
+  border-top: none;
+  border-right: none;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+@media (max-width: 1023px) {
+  .menu-tab-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(24, 25, 28, 0.95);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid #363942;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.project-card-outer {
+  background: #202126;
+  border: 1px solid #2f323a;
+  border-radius: 18px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card-outer:hover {
+  transform: translateY(-4px);
+  border-color: rgba(254, 220, 90, 0.45);
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(254, 220, 90, 0.12);
+}
+
+.project-card-outer:hover .project-action-btn {
+  background-color: #fedc5a;
+  border-color: #fedc5a;
+  color: #111215;
+}
+
+.certificate-card-outer {
+  background: #202126;
+  border: 1px solid #2f323a;
+  border-radius: 18px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.certificate-card-outer:hover {
+  transform: translateY(-4px);
+  border-color: rgba(254, 220, 90, 0.45);
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(254, 220, 90, 0.12);
+}
+
+.certificate-card-outer:hover .cert-overlay {
+  opacity: 1;
+}
+
+/* Custom scrollbars for modals and long contents */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #151619;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #33363f;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b505c;
 }
