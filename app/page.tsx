@@ -8,6 +8,7 @@ import { ExperienceTab } from "@/components/tabs/experience-tab";
 import { CertificatesTab } from "@/components/tabs/certificates-tab";
 import { ContactTab } from "@/components/tabs/contact-tab";
 import { PortfolioFooter } from "@/components/portfolio-footer";
+import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { User, FolderGit2, Briefcase, Award, Send } from "lucide-react";
 
 type TabKey = "about" | "projects" | "experience" | "certificates" | "contact";
@@ -24,9 +25,12 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f1013] text-gray-100 flex flex-col selection:bg-[#fedc5a] selection:text-black">
+    <div className="min-h-screen bg-[#0d0c11] text-gray-100 flex flex-col selection:bg-[#fedc5a] selection:text-black relative overflow-x-hidden">
+      {/* Particle Canvas Background */}
+      <ParticlesBackground />
+
       {/* Main Content Area */}
-      <main className="flex-1 pt-8 md:pt-12 pb-20 md:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <main className="flex-1 pt-8 md:pt-12 pb-20 md:pb-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
           {/* Left Column: Profile Card (Sticky on xl screens) */}
           <div className="xl:col-span-4 xl:sticky xl:top-8 z-20">
